@@ -14,6 +14,6 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
     """
     An async routine that takes in 2 int arguments.
     """
-    l = [asyncio.create_task(wait_random(max_delay)) for i in range(n)]
-    finish = [await task for task in asyncio.as_completed(l)]
+    task = [asyncio.create_task(wait_random(max_delay)) for i in range(n)]
+    finish = [await task for task in asyncio.as_completed(task)]
     return finish
